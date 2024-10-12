@@ -190,3 +190,13 @@ body {
     transform: scale(0.9); /* Уменьшение при наведении */
     background-color: #6fa0ef; /* Легкая смена цвета */
 }
+
+.header {
+    text-align: center; /* Центрируем текст */
+    margin: 50px 0; /* Добавим отступы сверху и снизу */
+}
+
+.header h2 {
+    font-size: 1em; /* Размер заголовка */
+    color: #333; /* Цвет заголовка */
+}
