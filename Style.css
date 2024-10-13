@@ -201,3 +201,45 @@ body {
     font-size: 1em; /* Размер заголовка */
     color: #333; /* Цвет заголовка */
 }
+.share-section {
+    text-align: center; /* Выравниваем текст по центру */
+    margin: 20px; /* Отступы для блока */
+}
+
+.social-buttons {
+    display: flex; /* Используем flexbox для расположения кнопок */
+    flex-wrap: wrap; /* Позволяем кнопкам переходить на новую строку */
+    justify-content: center; /* Выравниваем кнопки по центру */
+}
+
+.social-button {
+    display: block; /* Делаем кнопки блочными для вертикального расположения */
+    width: 120px; /* Ширина кнопок */
+    margin: 10px; /* Отступы между кнопками */
+    padding: 10px; /* Внутренние отступы */
+    color: white; /* Цвет текста */
+    text-align: center; /* Выравнивание текста внутри кнопки */
+    border-radius: 5px; /* Скругление углов */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Жирный текст */
+}
+
+.social-button.facebook {
+    background-color: #3b5998; /* Цвет кнопки Facebook */
+}
+
+.social-button.twitter {
+    background-color: #1da1f2; /* Цвет кнопки Twitter */
+}
+
+.social-button.telegram {
+    background-color: #0088cc; /* Цвет кнопки Telegram */
+}
+
+.social-button.instagram {
+    background-color: #e1306c; /* Цвет кнопки Instagram */
+}
+
+.social-button.linkedin {
+    background-color: #0077b5; /* Цвет кнопки LinkedIn */
+}
