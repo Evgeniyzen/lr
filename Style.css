@@ -243,3 +243,78 @@ body {
 .social-button.linkedin {
     background-color: #0077b5; /* Цвет кнопки LinkedIn */
 }
+
+/* Стили для поздравительной страницы выпускников */
+body {
+    background: linear-gradient(to right, #4e54c8, #8f94fb);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden; /* Убираем прокрутку */
+}
+
+.congratulations-container {
+    text-align: center;
+    padding: 50px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.trophy {
+    width: 200px; /* Размер кубка */
+    margin: 20px auto;
+    animation: bounce 1s infinite; /* Анимация подпрыгивания */
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #ffcc00;
+    color: black;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.button:hover {
+    background-color: #ffd700;
+    transform: scale(1.1);
+}
+
+/* Анимации */
+.fade-in {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.slide-in {
+    animation: slideIn 1.5s ease-in-out;
+}
+
+.zoom-in {
+    animation: zoomIn 1.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
