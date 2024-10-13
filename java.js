@@ -122,3 +122,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const trophy = document.querySelector('.trophy');
     trophy.classList.add('animate');
 });
+if (userHasCompletedAllLessons()) {
+    window.location.href = 'congratulations.html';
+}
+if (localStorage.getItem('completedLessons') === '10') {
+    window.location.href = 'congratulations.html';
+}
+
