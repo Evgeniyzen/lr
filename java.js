@@ -111,3 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
         nextLessonInfo.innerText = "Ваш следующий урок будет доступен завтра. Возвращайтесь на сайт, чтобы продолжить!";
     }
 });
+// Пример логики для отслеживания завершенных уроков
+let completedLessons = 10; // Получите фактическое значение из хранилища или переменной
+
+if (completedLessons >= 10) {
+    window.location.href = "congratulations.html";
+}
+// Добавить дополнительные эффекты при загрузке страницы
+document.addEventListener("DOMContentLoaded", function () {
+    const trophy = document.querySelector('.trophy');
+    trophy.classList.add('animate');
+});
