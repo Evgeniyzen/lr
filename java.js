@@ -72,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let firstVisit = localStorage.getItem("firstVisit");
     if (!firstVisit) {
-        firstVisit = new Date();
+        firstVisit = new Date().toISOString();
         localStorage.setItem("firstVisit", firstVisit);
     } else {
         firstVisit = new Date(firstVisit);
@@ -83,18 +83,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentLessonIndex = Math.min(daysPassed, lessons.length - 1);
     const currentLesson = lessons[currentLessonIndex];
 
-    // Обновляем содержимое карточки
     document.getElementById("lessonTitle").innerText = currentLesson.title;
     document.getElementById("lessonDescription").innerText = currentLesson.description;
     document.getElementById("lessonTask").innerText = currentLesson.task;
     document.getElementById("lessonGuide").innerText = currentLesson.guide;
 
-    // Обновляем прогресс-бар
-    const progressPercentage = ((currentLessonIndex + 1) / lessons.length) * 100;
-    progressBar.style.width = `${progressPercentage}%`;
-    progressText.innerText = `${currentLessonIndex + 1}/${lessons.length}`;
+    let completedLessons = parseInt(localStorage.getItem('completedLessons')) || 0;
 
-    // Обработчик для переворота карточки
+    const updateProgress = () => {
+        const progressPercentage = ((completedLessons + 1) / lessons.length) * 100;
+        progressBar.style.width = `${progressPercentage}%`;
+        progressText.innerText = `${completedLessons + 1}/${lessons.length}`;
+    };
+
+    updateProgress();
+
     howToBtn.addEventListener("click", () => {
         lessonCard.classList.add("flipped");
     });
@@ -103,29 +106,20 @@ document.addEventListener("DOMContentLoaded", () => {
         lessonCard.classList.remove("flipped");
     });
 
-    // Обновляем информацию о следующем уроке
     const nextLessonInfo = document.getElementById("nextLessonInfo");
     if (currentLessonIndex >= lessons.length - 1) {
         nextLessonInfo.innerText = "Вы завершили все 10 уроков! Продолжайте применять полученные знания.";
     } else {
         nextLessonInfo.innerText = "Ваш следующий урок будет доступен завтра. Возвращайтесь на сайт, чтобы продолжить!";
     }
-});
-// Пример логики для отслеживания завершенных уроков
-let completedLessons = 10; // Получите фактическое значение из хранилища или переменной
 
-if (completedLessons >= 10) {
-    window.location.href = "congratulations.html";
-}
-// Добавить дополнительные эффекты при загрузке страницы
-document.addEventListener("DOMContentLoaded", function () {
-    const trophy = document.querySelector('.trophy');
-    trophy.classList.add('animate');
+    if (completedLessons >= lessons.length) {
+        window.location.href = 'congratulations.html';
+    } else {
+        document.getElementById("completeLessonBtn").addEventListener("click", () => {
+            completedLessons++;
+            localStorage.setItem('completedLessons', completedLessons);
+            updateProgress();
+        });
+    }
 });
-if (userHasCompletedAllLessons()) {
-    window.location.href = 'congratulations.html';
-}
-if (localStorage.getItem('completedLessons') === '10') {
-    window.location.href = 'congratulations.html';
-}
-
